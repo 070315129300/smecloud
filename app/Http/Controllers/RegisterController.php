@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -65,12 +65,41 @@ class RegisterController extends Controller
 //        return $update;
 //    }
 
-    public function change(Request $request, $id)
+//    public function change(Request $request, User $user)
+//    {
+//        $user = User::find(id);
+//        $user->Update($request->all());
+//        return $user;
+//    }
+
+//    public function change(Request $request, $id)
+//    {
+//        $user = User::find($id);
+//        $input = $request->all();
+//        $user->update($input);
+//        return $user;
+//    }
+
+    public function change(Request $request, User $user)
     {
-        $product = User::find($id);
-        $product->Update($request->all());
-        return $product;
+        $request->validate([
+            'firstname',
+            'lastname',
+            'email',
+            'phone'
+        ]);
+        $request->update([
+            update([
+            'firstname' => $request['firstname'],
+            'lastname' => $request['lastname'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+
+        ]);
+        return $user;
     }
+
+
     /**
      * Remove the specified resource from storage.
      *

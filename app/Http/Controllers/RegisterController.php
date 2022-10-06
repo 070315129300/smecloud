@@ -2,8 +2,8 @@
 
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
-use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -25,18 +25,18 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-//    public function store(Request $request)
-//    {
-//        //
-//        $request->validate([
-//            'firstname' => 'required',
-//        'lastname' => 'required',
-//        'password' => 'required',
-//        'email' => 'required',
-//        'phone' => 'required'
-//        ]);
-//        return Registrations::create($request->all());
-//    }
+    //    public function store(Request $request)
+    //    {
+    //        //
+    //        $request->validate([
+    //            'firstname' => 'required',
+    //        'lastname' => 'required',
+    //        'password' => 'required',
+    //        'email' => 'required',
+    //        'phone' => 'required'
+    //        ]);
+    //        return Registrations::create($request->all());
+    //    }
 
     /**
      * Display the specified resource.
@@ -57,46 +57,34 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-//    public function update(Request $request, $id)
-//    {
-//        //
-//        $update = User::find($id);
-//        $update->update($request->all());
-//        return $update;
-//    }
+    //    public function update(Request $request, $id)
+    //    {
+    //        //
+    //        $update = User::find($id);
+    //        $update->update($request->all());
+    //        return $update;
+    //    }
 
-//    public function change(Request $request, User $user)
-//    {
-//        $user = User::find(id);
-//        $user->Update($request->all());
-//        return $user;
-//    }
+    //    public function change(Request $request, User $user)
+    //    {
+    //        $user = User::find(id);
+    //        $user->Update($request->all());
+    //        return $user;
+    //    }
 
-//    public function change(Request $request, $id)
-//    {
-//        $user = User::find($id);
-//        $input = $request->all();
-//        $user->update($input);
-//        return $user;
-//    }
+    //    public function change(Request $request, $id)
+    //    {
+    //        $user = User::find($id);
+    //        $input = $request->all();
+    //        $user->update($input);
+    //        return $user;
+    //    }
 
-    public function change(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'firstname',
-            'lastname',
-            'email',
-            'phone'
-        ]);
-        $request->update([
-            update([
-            'firstname' => $request['firstname'],
-            'lastname' => $request['lastname'],
-            'email' => $request['email'],
-            'phone' => $request['phone'],
-
-        ]);
-        return $user;
+        $product = User::find($id);
+        $product->update($request->all());
+        return $product;
     }
 
 
@@ -110,18 +98,14 @@ class RegisterController extends Controller
     {
         //
         return User::destroy($id);
-
-
     }
 
-/* @param  int  $id
+    /* @param  int  $id
 * @return \Illuminate\Http\Response
 */
     public function search($name)
     {
         //
-        return User::where('name', 'like', '%'.$name.'%')->get();
-
-
+        return User::where('name', 'like', '%' . $name . '%')->get();
     }
 }

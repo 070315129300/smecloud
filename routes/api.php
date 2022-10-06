@@ -23,11 +23,11 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 //protected routes
-Route::group(['middleware' => ['auth:sanctum']], function() {
-    Route::put('/user/{id}', [RegisterController::class, 'change']);
+// Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::put('/user/{id}', [RegisterController::class, 'update']);
     Route::delete('/user/{id}', [RegisterController::class, 'delete']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user/{id}', [RegisterController::class, 'show']);
 //    Route::post('/registers', [RegisterController::class, 'store']);
 
-});
+// });

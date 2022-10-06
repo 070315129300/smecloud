@@ -45,7 +45,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function find(int $id)
-    {
-    }
+    // public static function find(int $id)
+    // {
+    // }
 }
